@@ -8,6 +8,8 @@
     <artifactId>counter-maven-plugin</artifactId>
     <version>0.0.1</version>
     <name>counter-maven-plugin</name>
+    <url>https://github.com/tomaslad/counter-maven-plugin</url>
+    <description>Counter maven plugin</description>
 
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -23,7 +25,7 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-
+    
     <developers>
         <developer>
             <id>tomaslad</id>
@@ -31,6 +33,12 @@
             <email>tlad@trask.cz</email>
         </developer>
     </developers>
+
+    <scm>
+        <connection>scm:git@github.com:tomaslad/counter-maven-plugin.git</connection>
+        <developerConnection>scm:git@github.com:tomaslad/counter-maven-plugin.git</developerConnection>
+        <url>https://github.com/tomaslad/counter-maven-plugin/tree/main</url>
+    </scm>
 
     <distributionManagement>
         <snapshotRepository>

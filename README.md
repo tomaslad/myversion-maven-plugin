@@ -6,3 +6,4 @@ snapshot: https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/
 
 staging: https://s01.oss.sonatype.org/content/repositories/staging/io/github/tomaslad/
 
+GPG public key uploaded here: keys.openpgp.org
