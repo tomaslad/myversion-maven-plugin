@@ -1,4 +1,4 @@
-package cz.tlad.maven.plugin.counter;
+package cz.tomaslad.maven.plugin.counter;
 
 import java.util.List;
 
