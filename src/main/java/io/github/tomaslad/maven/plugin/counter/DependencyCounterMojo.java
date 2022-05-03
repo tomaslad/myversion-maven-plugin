@@ -1,4 +1,4 @@
-package cz.tomaslad.maven.plugin.counter;
+package io.github.tomaslad.maven.plugin.counter;
 
 import java.util.List;
 
