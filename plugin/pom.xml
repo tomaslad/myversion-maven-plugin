@@ -18,7 +18,6 @@
         <maven-plugin-api.version>3.6.2</maven-plugin-api.version>
         <maven-plugin-annotations.version>3.6.0</maven-plugin-annotations.version>
         <maven-project.version>2.2.1</maven-project.version>
-        <jgit.version>6.1.0.202203080745-r</jgit.version>
     </properties>
 
     <licenses>
@@ -147,6 +146,16 @@
             <artifactId>jproc</artifactId>
             <version>2.8.0</version>
         </dependency>
+
+        <!-- Test dependencies -->
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 </project>

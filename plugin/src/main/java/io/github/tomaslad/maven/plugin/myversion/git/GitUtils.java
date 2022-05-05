@@ -5,17 +5,13 @@ import org.buildobjects.process.ProcResult;
 
 public class GitUtils {
 
-    public String getLastestTag() {
+    public GitCommit getLastestTag() {
         ProcResult result = new ProcBuilder("git")
-                .withArgs("describe", "--tags", "--always", "--first-parent")
+                .withArgs("describe", "--tags", "--always", "--first-parent", "--match=v*")
                 .run();
-        return result.getOutputString();
-    }
 
-    public String getLastestTag() {
-        ProcResult result = new ProcBuilder("git")
-                .withArgs("describe", "--tags", "--always", "--first-parent")
-                .run();
-        return result.getOutputString();
+        String output = result.getOutputString();
+
+
     }
 }
