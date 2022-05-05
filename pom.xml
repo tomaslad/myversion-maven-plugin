@@ -13,7 +13,7 @@
 
     <groupId>com.baeldung</groupId>
     <artifactId>parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${MY_VERSION}</version>
     <packaging>pom</packaging>
 
     <modules>

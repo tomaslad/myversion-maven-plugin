@@ -1,4 +1,4 @@
-package io.github.tomaslad.maven.plugin.counter;
+package io.github.tomaslad.maven.plugin.myversion;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import org.apache.maven.project.MavenProject;
  * It can be filtered by scope.
  *
  */
-@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.COMPILE)
+@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.VALIDATE)
 public class DependencyCounterMojo extends AbstractMojo {
 
     /**

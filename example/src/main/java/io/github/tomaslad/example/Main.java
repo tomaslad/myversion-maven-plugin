@@ -1,27 +1,16 @@
 package io.github.tomaslad.example;
 
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.lib.*;
-
-import java.io.IOException;
-import java.util.List;
+import org.buildobjects.process.ProcBuilder;
+import org.buildobjects.process.ProcResult;
 
 class Main {
 
-    public static void main(String args[]) throws GitAPIException, IOException {
-        Repository repository = new RepositoryBuilder().readEnvironment().findGitDir().build();
-        ObjectId objectId = repository.resolve(Constants.HEAD);
-        String tagName = getTag(repository);
+    public static void main(String args[]) {
+        ProcResult result = new ProcBuilder("git")
+                .withArgs("describe", "--tags", "--always", "--first-parent")
+                .run();
+
+        System.out.println("Output: " + result.getOutputString());
     }
 
-    private static String getTag(Repository repo) throws GitAPIException {
-        try (Git git = Git.wrap(repo)) {
-            List<Ref> refs = git.tagList().call();
-            for (Ref ref : refs) {
-                System.out.println("ref: " + ref.getName());
-            }
-            return "ahoj";
-        }
-    }
 }

@@ -10,7 +10,11 @@ GPG public key uploaded here: keys.openpgp.org
 
 
 JGit
+
 https://github.com/centic9/jgit-cookbook/
+
 https://github.com/git-commit-id/git-commit-id-plugin-core
+
 https://github.com/git-commit-id/git-commit-id-maven-plugin
+
 https://github.com/palantir/gradle-git-version
