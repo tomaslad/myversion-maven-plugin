@@ -6,7 +6,7 @@
 
     <groupId>io.github.tomaslad</groupId>
     <artifactId>counter-maven-plugin</artifactId>
-    <version>4</version>
+    <version>5</version>
     <name>counter-maven-plugin</name>
     <url>https://github.com/tomaslad/counter-maven-plugin</url>
     <description>Counter maven plugin</description>

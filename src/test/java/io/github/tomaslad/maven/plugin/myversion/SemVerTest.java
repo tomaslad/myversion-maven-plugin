@@ -1,4 +1,4 @@
-package io.github.tomaslad.maven.plugin.myversion.git;
+package io.github.tomaslad.maven.plugin.myversion;
 
 import io.github.tomaslad.maven.plugin.myversion.SemVer;
 import org.junit.jupiter.api.Test;
