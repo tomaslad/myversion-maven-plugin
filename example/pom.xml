@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent</artifactId>
-        <version>0</version>
+        <version>VERSION</version>
     </parent>
 
     <artifactId>example</artifactId>
