@@ -5,11 +5,10 @@ package io.github.tomaslad.maven.plugin.myversion;
  */
 public final class SemVer {
 
-    private final int major;
-    private final int minor;
-    private final int patch;
-    private final int releaseCandidate;
-    private final boolean dirty;
+    private int major;
+    private int minor;
+    private int patch;
+    private int releaseCandidate;
 
     /**
      * Constructs a {@code Version} with the major, minor and patch version numbers.
@@ -19,7 +18,7 @@ public final class SemVer {
      * @param patch the patch version number
      * @throws IllegalArgumentException if one of the version numbers is a negative integer
      */
-    SemVer(int major, int minor, int patch, int releaseCandidate, boolean dirty) {
+    SemVer(int major, int minor, int patch, int releaseCandidate) {
         if (major < 0 || minor < 0 || patch < 0) {
             throw new IllegalArgumentException("Major, minor and patch versions MUST be non-negative integers.");
         }
@@ -27,7 +26,6 @@ public final class SemVer {
         this.minor = minor;
         this.patch = patch;
         this.releaseCandidate = releaseCandidate;
-        this.dirty = dirty;
     }
 
     public int getMajor() {
@@ -46,10 +44,38 @@ public final class SemVer {
         return releaseCandidate;
     }
 
-    public boolean isDirty() {
-        return dirty;
+    public void increaseMajor() {
+        major += 1;
+        minor = 0;
+        patch = 0;
+        releaseCandidate = 0;
     }
 
+    public void increaseMinor() {
+        minor += 1;
+        patch = 0;
+        releaseCandidate = 0;
+    }
+
+    public void increasePatch() {
+        patch += 1;
+        releaseCandidate = 0;
+    }
+
+    public void increaseReleaseCandidate() {
+        releaseCandidate += 1;
+    }
+
+    @Override
+    public String toString() {
+        String version = "v" + major + "." + minor + "." + patch + "";
+
+        if (releaseCandidate > 0) {
+            version = version + "rc." + releaseCandidate;
+        }
+
+        return version;
+    }
 
     public static SemVer parse(String version) {
         if (version == null || version.isEmpty()) {
@@ -60,10 +86,11 @@ public final class SemVer {
         int minor = -1;
         int patch = -1;
         int releaseCandidate = -1;
-        boolean dirty = false;
 
-        // v1.0.0-rc.1-dirty
+        // v1.0.0
+        // v1.0.0-rc.1
         String[] parts = version.split("-");
+
         for (String part : parts) {
             if (part.startsWith("v")) {
                 // major.minor.patch
@@ -75,13 +102,10 @@ public final class SemVer {
                 // release candidate
                 String part2 = part.replace("rc.", "");
                 releaseCandidate = Integer.parseInt(part2);
-            } else if (part.equals("-dirty")) {
-                // dirty
-                dirty = true;
             }
         }
 
-        return new SemVer(major, minor, patch, releaseCandidate, dirty);
+        return new SemVer(major, minor, patch, releaseCandidate);
 
     }
 }

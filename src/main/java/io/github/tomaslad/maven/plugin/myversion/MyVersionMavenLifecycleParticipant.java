@@ -16,7 +16,16 @@ public class MyVersionMavenLifecycleParticipant extends AbstractMavenLifecyclePa
     @Override
     public void afterSessionStart(MavenSession mavenSession) throws MavenExecutionException {
         logger.info("Using myversion-maven-plugin");
-        mavenSession.getUserProperties().setProperty("MY_VERSION", "1.2.3");
+
+        GitDescribe describe = GitUtils.describe();
+        SemVer semVer = SemVer.parse(describe.getVersion());
+        String version = semVer.toString();
+
+        if (!describe.isReleaseCommit()) {
+            version += "-SNAPSHOT";
+        }
+
+        mavenSession.getUserProperties().setProperty("MY_VERSION", version);
     }
 
     @Override

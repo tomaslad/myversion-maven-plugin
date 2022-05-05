@@ -3,8 +3,6 @@ package io.github.tomaslad.maven.plugin.myversion;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.buildobjects.process.ExternalProcessFailureException;
-import org.buildobjects.process.ProcBuilder;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -13,41 +11,34 @@ import java.nio.charset.StandardCharsets;
 @UtilityClass
 public class GitUtils {
 
-    public static String readLatestTag() {
-        // https://git-scm.com/docs/git-describe
-
-
-
-       // ProcessBuilder processBuilder = new ProcessBuilder().command("git describe --tags --always --first-parent --match=v* --abbrev=0 --dirty");
+    public static GitDescribe describe() {
         try {
-            Process process = Runtime.getRuntime().exec("git describe --tags --always --first-parent --match=v* --abbrev=0 --dirty");
-           // Process process = processBuilder.start();
+            // https://git-scm.com/docs/git-describe
+            Process process = Runtime.getRuntime().exec("git describe --tags --always --first-parent --match=v* --dirty");
             int exitValue = process.waitFor();
-            log.info("exitValue: {}", exitValue);
-            return IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8);
+            if (exitValue != 0) {
+                log.warn("exitValue: {}", exitValue);
+            }
+            String output = IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8);
+
+           return GitDescribe.parse(output);
         } catch (IOException | InterruptedException e) {
-            log.error("Set tag error: ", e);
+            log.error("Read latest tag error: ", e);
             throw new RuntimeException(e);
         }
     }
 
-    public static void writeTag(String version) {
-        ProcBuilder procBuilder = new ProcBuilder("git tag --annotate " + version + " --message Ahoj"); // https://git-scm.com/docs/git-tag
+    public static void tag(String version) {
         try {
-            procBuilder.run();
-        } catch (ExternalProcessFailureException e) {
-            log.error("Set tag error: ", e);
-        }
-    }
-
-    public static void writeTag2(String version) {
-        ProcessBuilder processBuilder = new ProcessBuilder().command("git tag --annotate " + version + " --message Ahoj");
-        try {
-            Process process = processBuilder.start();
+            // https://git-scm.com/docs/git-tag
+            Process process = Runtime.getRuntime().exec("git tag --annotate " + version);
             int exitValue = process.waitFor();
-            log.info("exitValue: {}", exitValue);
+            if (exitValue != 0) {
+                log.warn("exitValue: {}", exitValue);
+            }
         } catch (IOException | InterruptedException e) {
             log.error("Set tag error: ", e);
+            throw new RuntimeException(e);
         }
     }
 }
