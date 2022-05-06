@@ -6,7 +6,7 @@
 
     <groupId>io.github.tomaslad</groupId>
     <artifactId>myversion-maven-plugin</artifactId>
-    <version>7</version>
+    <version>8</version>
     <name>myversion-maven-plugin</name>
     <url>https://github.com/tomaslad/myversion-maven-plugin</url>
     <description>MyVersion maven plugin</description>
@@ -55,6 +55,18 @@
         <url>https://github.com/tomaslad/myversion-maven-plugin/tree/main</url>
     </scm>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+
     <build>
         <pluginManagement>
             <plugins>
@@ -82,6 +94,16 @@
                     <groupId>org.codehaus.plexus</groupId>
                     <artifactId>plexus-component-metadata</artifactId>
                     <version>${plexus-component-metadata.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.6</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.6.13</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -120,6 +142,29 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                </configuration>
             </plugin>
         </plugins>
     </build>

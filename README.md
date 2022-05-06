@@ -14,6 +14,12 @@ Project using this plugin will use [semantic versions](http://semver.org/) style
 * Compute the version of your project from git repository. 
 * Bump the version for a release.
 
+# Minimal requirements
+
+* Java 8 
+* Maven 3.6.3
+* Git 2.9.5
+
 # Inspired from
 
 * https://github.com/jgitver/jgitver-maven-plugin
