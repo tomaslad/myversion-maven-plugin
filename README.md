@@ -1,17 +1,15 @@
-https://www.baeldung.com/maven-plugin
+myversion-maven-plugin
+=====================
 
-https://central.sonatype.org/publish/publish-maven/
+The goal of myversion-maven-plugin is to provide a standardized way to calculate a project version from a git repository.
 
-snapshot: https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/tomaslad/
+[How to use it](https://github.com/tomaslad/myversion-maven-plugin-example)
 
-staging: https://s01.oss.sonatype.org/content/repositories/staging/io/github/tomaslad/
+# Opinions
 
-GPG public key uploaded here: keys.openpgp.org
+Project using this plugin will use [semantic versions](http://semver.org/) style strings. e.g. `major.minor.patch-<prerelease>+<metadata>`
 
+# Goals
 
-
-https://github.com/git-commit-id/git-commit-id-plugin-core
-
-https://github.com/git-commit-id/git-commit-id-maven-plugin
-
-https://github.com/palantir/gradle-git-version
+1. Compute the version of your project from git repository.
+2. Bump the version for a release.
