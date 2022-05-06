@@ -5,6 +5,8 @@
             <pluginExecutionFilter>
                 <goals>
                     <goal>bump-major</goal>
+                    <goal>bump-minor</goal>
+                    <goal>bump-patch</goal>
                 </goals>
             </pluginExecutionFilter>
         </pluginExecution>

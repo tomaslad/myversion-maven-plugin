@@ -1,7 +1,9 @@
 package io.github.tomaslad.maven.plugin.myversion;
 
 import io.github.tomaslad.maven.plugin.myversion.git.GitUtils;
+import io.github.tomaslad.maven.plugin.myversion.git.GitDescribe;
 import io.github.tomaslad.maven.plugin.myversion.semver.SemVer;
+import io.github.tomaslad.maven.plugin.myversion.semver.SemVerUtils;
 import org.apache.maven.AbstractMavenLifecycleParticipant;
 import org.apache.maven.MavenExecutionException;
 import org.apache.maven.execution.MavenSession;
@@ -20,7 +22,7 @@ public class MyVersionMavenLifecycleParticipant extends AbstractMavenLifecyclePa
         logger.info("Using myversion-maven-plugin");
 
         GitDescribe describe = GitUtils.describe();
-        SemVer semVer = SemVer.parse(describe.getVersion());
+        SemVer semVer = SemVerUtils.parse(describe.getTagName());
         String version = semVer.toString();
 
         if (!describe.isReleaseCommit()) {

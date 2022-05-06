@@ -20,8 +20,8 @@ public final class SemVerUtils {
 
         for (String part : parts) {
             if (part.startsWith("v")) {
-                String[] parts2 = version.split(".");
-                builder.major(Integer.parseInt(parts2[0]));
+                String[] parts2 = part.split("\\.");
+                builder.major(Integer.parseInt(parts2[0].substring(1)));
                 builder.minor(Integer.parseInt(parts2[1]));
                 builder.patch(Integer.parseInt(parts2[2]));
             } else if (part.startsWith("rc")) {
