@@ -7,6 +7,7 @@ import io.github.tomaslad.maven.plugin.myversion.semver.SemVerUtils;
 import org.apache.maven.AbstractMavenLifecycleParticipant;
 import org.apache.maven.MavenExecutionException;
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
 import org.codehaus.plexus.logging.Logger;
@@ -18,7 +19,7 @@ public class MyVersionMavenLifecycleParticipant extends AbstractMavenLifecyclePa
     private Logger logger;
 
     @Override
-    public void afterSessionStart(MavenSession mavenSession) throws MavenExecutionException {
+    public void afterProjectsRead(MavenSession mavenSession) throws MavenExecutionException {
         logger.info("Using myversion-maven-plugin");
 
         GitDescribe describe = GitUtils.describe();
@@ -29,12 +30,9 @@ public class MyVersionMavenLifecycleParticipant extends AbstractMavenLifecyclePa
             version += "-SNAPSHOT";
         }
 
-        mavenSession.getCurrentProject().setVersion(version);
-    }
-
-    @Override
-    public void afterProjectsRead(MavenSession session) throws MavenExecutionException {
-        // ask a beer to the machine
+        for (MavenProject mavenProject : mavenSession.getAllProjects()) {
+            mavenProject.setVersion(version);
+        }
     }
 
 }

@@ -9,9 +9,6 @@ staging: https://s01.oss.sonatype.org/content/repositories/staging/io/github/tom
 GPG public key uploaded here: keys.openpgp.org
 
 
-JGit
-
-https://github.com/centic9/jgit-cookbook/
 
 https://github.com/git-commit-id/git-commit-id-plugin-core
 
