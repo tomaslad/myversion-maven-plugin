@@ -1,6 +1,6 @@
 package io.github.tomaslad.maven.plugin.myversion;
 
-import io.github.tomaslad.maven.plugin.myversion.SemVer;
+import io.github.tomaslad.maven.plugin.myversion.semver.SemVer;
 import org.junit.jupiter.api.Test;
 
 import static com.google.common.truth.Truth.assertThat;

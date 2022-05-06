@@ -1,4 +1,4 @@
-package io.github.tomaslad.maven.plugin.myversion;
+package io.github.tomaslad.maven.plugin.myversion.git;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @UtilityClass
-public class GitUtils {
+public final class GitUtils {
 
     public static GitDescribe describe() {
         try {
@@ -20,8 +20,7 @@ public class GitUtils {
                 log.warn("exitValue: {}", exitValue);
             }
             String output = IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8);
-
-           return GitDescribe.parse(output);
+            return GitDescribeUtils.parse(output);
         } catch (IOException | InterruptedException e) {
             log.error("Read latest tag error: ", e);
             throw new RuntimeException(e);

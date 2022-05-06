@@ -10,9 +10,6 @@ public class GitUtilsTest {
 
     @Test
     public void test() {
-        String s = GitUtils.readLatestTag();
-        System.out.println("S: " + s);
 
-        GitUtils.writeTag2("vAhoj");
     }
 }

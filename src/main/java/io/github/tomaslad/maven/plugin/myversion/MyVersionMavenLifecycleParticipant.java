@@ -1,5 +1,7 @@
 package io.github.tomaslad.maven.plugin.myversion;
 
+import io.github.tomaslad.maven.plugin.myversion.git.GitUtils;
+import io.github.tomaslad.maven.plugin.myversion.semver.SemVer;
 import org.apache.maven.AbstractMavenLifecycleParticipant;
 import org.apache.maven.MavenExecutionException;
 import org.apache.maven.execution.MavenSession;
