@@ -5,19 +5,33 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.tomaslad</groupId>
-    <artifactId>counter-maven-plugin</artifactId>
-    <version>6</version>
-    <name>counter-maven-plugin</name>
-    <url>https://github.com/tomaslad/counter-maven-plugin</url>
-    <description>Counter maven plugin</description>
+    <artifactId>myversion-maven-plugin</artifactId>
+    <version>7</version>
+    <name>myversion-maven-plugin</name>
+    <url>https://github.com/tomaslad/myversion-maven-plugin</url>
+    <description>MyVersion maven plugin</description>
     <packaging>maven-plugin</packaging>
 
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+
+        <!-- plugins -->
+
+        <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
+        <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
+        <maven-source-plugin.version>3.2.0</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
+        <plexus-component-metadata.version>1.7.1</plexus-component-metadata.version>
+
+        <!-- dependencies -->
+
         <maven-plugin-api.version>3.6.2</maven-plugin-api.version>
         <maven-plugin-annotations.version>3.6.0</maven-plugin-annotations.version>
         <maven-project.version>2.2.1</maven-project.version>
+        <lombok.version>1.18.20</lombok.version>
+        <plexus-component-annotations.version>1.7.1</plexus-component-annotations.version>
+        <junit.version>5.8.2</junit.version>
     </properties>
 
     <licenses>
@@ -36,9 +50,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git@github.com:tomaslad/counter-maven-plugin.git</connection>
-        <developerConnection>scm:git@github.com:tomaslad/counter-maven-plugin.git</developerConnection>
-        <url>https://github.com/tomaslad/counter-maven-plugin/tree/main</url>
+        <connection>scm:git@github.com:tomaslad/myversion-maven-plugin.git</connection>
+        <developerConnection>scm:git@github.com:tomaslad/myversion-maven-plugin.git</developerConnection>
+        <url>https://github.com/tomaslad/myversion-maven-plugin/tree/main</url>
     </scm>
 
     <build>
@@ -47,12 +61,27 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-plugin-plugin</artifactId>
-                    <version>3.6.0</version>
+                    <version>${maven-plugin-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.8.2</version>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.plexus</groupId>
+                    <artifactId>plexus-component-metadata</artifactId>
+                    <version>${plexus-component-metadata.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -60,7 +89,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -73,7 +101,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.0</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -86,7 +113,6 @@
             <plugin>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-component-metadata</artifactId>
-                <version>1.7.1</version>
                 <executions>
                     <execution>
                         <goals>
@@ -116,12 +142,18 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-project</artifactId>
+                <version>${maven-project.version}</version>
+            </dependency>
+
             <!-- Provided dependencies -->
 
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.20</version>
+                <version>${lombok.version}</version>
             </dependency>
 
             <!-- Test dependencies -->
@@ -129,7 +161,7 @@
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
-                <version>5.8.2</version>
+                <version>${junit.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.truth</groupId>
@@ -148,7 +180,7 @@
         <dependency>
             <groupId>org.codehaus.plexus</groupId>
             <artifactId>plexus-component-annotations</artifactId>
-            <version>1.7.1</version>
+            <version>${plexus-component-annotations.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
@@ -164,7 +196,6 @@
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-project</artifactId>
-            <version>${maven-project.version}</version>
         </dependency>
 
         <!-- Provided dependencies -->
