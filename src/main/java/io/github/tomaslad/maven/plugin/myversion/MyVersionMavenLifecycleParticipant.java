@@ -29,7 +29,7 @@ public class MyVersionMavenLifecycleParticipant extends AbstractMavenLifecyclePa
             version += "-SNAPSHOT";
         }
 
-        mavenSession.getUserProperties().setProperty("MY_VERSION", version);
+        mavenSession.getCurrentProject().setVersion(version);
     }
 
     @Override

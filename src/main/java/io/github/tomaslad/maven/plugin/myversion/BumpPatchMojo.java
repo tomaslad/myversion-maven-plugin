@@ -4,7 +4,7 @@ import io.github.tomaslad.maven.plugin.myversion.semver.SemVer;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
-@Mojo(name = "bump-minor", defaultPhase = LifecyclePhase.NONE)
+@Mojo(name = "bump-patch", defaultPhase = LifecyclePhase.NONE)
 public class BumpPatchMojo extends AbstractBumpMojo {
 
     @Override
