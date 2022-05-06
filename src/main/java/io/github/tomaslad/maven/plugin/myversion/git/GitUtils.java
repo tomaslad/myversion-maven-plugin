@@ -30,7 +30,7 @@ public final class GitUtils {
     public static void tag(String version) {
         try {
             // https://git-scm.com/docs/git-tag
-            Process process = Runtime.getRuntime().exec("git tag --annotate " + version);
+            Process process = Runtime.getRuntime().exec("git tag --annotate " + version + " --message \" Release " + version + "\"");
             int exitValue = process.waitFor();
             if (exitValue != 0) {
                 log.warn("exitValue: {}", exitValue);

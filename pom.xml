@@ -6,7 +6,7 @@
 
     <groupId>io.github.tomaslad</groupId>
     <artifactId>myversion-maven-plugin</artifactId>
-    <version>8</version>
+    <version>9</version>
     <name>myversion-maven-plugin</name>
     <url>https://github.com/tomaslad/myversion-maven-plugin</url>
     <description>MyVersion maven plugin</description>
