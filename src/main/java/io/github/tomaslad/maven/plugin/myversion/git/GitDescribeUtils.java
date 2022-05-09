@@ -34,7 +34,7 @@ public final class GitDescribeUtils {
                 builder.commitDistance(Integer.parseInt(part));
             } else if (part.startsWith(PREFIX_COMMIT_ABBREV)) {
                 builder.commitAbbrev(part.substring(1));
-            } else if (part.equals("-dirty")) {
+            } else if (part.equals("dirty")) {
                 builder.dirty(true);
             }
         }

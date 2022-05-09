@@ -53,10 +53,10 @@ public class SemVer {
 
     @Override
     public String toString() {
-        String version = "v" + major + "." + minor + "." + patch + "";
+        String version = "v" + major + "." + minor + "." + patch;
 
         if (releaseCandidate > 0) {
-            version = version + "rc." + releaseCandidate;
+            version = version + "-rc." + releaseCandidate;
         }
 
         return version;
