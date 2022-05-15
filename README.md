@@ -25,3 +25,4 @@ Project using this plugin will use [semantic versions](http://semver.org/) style
 * https://github.com/jgitver/jgitver-maven-plugin
 * https://github.com/nebula-plugins/nebula-release-plugin
 * https://github.com/palantir/gradle-git-version
+* https://github.com/allegro/axion-release-plugin
