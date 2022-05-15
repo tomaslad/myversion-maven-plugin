@@ -6,6 +6,13 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Set;
+
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.Status;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.internal.storage.file.FileRepository;
+import org.eclipse.jgit.lib.Repository;
 
 @Slf4j
 @UtilityClass
@@ -39,5 +46,13 @@ public final class GitUtils {
             log.error("Set tag error: ", e);
             throw new RuntimeException(e);
         }
+    }
+
+    public static boolean hasUncommitedChanges() throws IOException, GitAPIException {
+        Repository repo = new FileRepository(System.getProperty("user.dir") + "/.git" );
+        Git git = new Git( repo );
+        Status status = git.status().call();
+        Set<String> modified = status.getModified();
+        return ( modified.size() != 0 );
     }
 }
