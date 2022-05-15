@@ -32,6 +32,7 @@
         <lombok.version>1.18.20</lombok.version>
         <plexus-component-annotations.version>1.7.1</plexus-component-annotations.version>
         <junit.version>5.8.2</junit.version>
+        <checkUncommitedChanges>1</checkUncommitedChanges>
     </properties>
 
     <licenses>
