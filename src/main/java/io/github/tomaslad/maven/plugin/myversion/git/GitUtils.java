@@ -49,7 +49,7 @@ public final class GitUtils {
             if (exitValue != 0) {
                 log.warn("exitValue: {}", exitValue);
             }
-            return true;
+            return !(IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8).isEmpty());
         } catch (IOException | InterruptedException e) {
             log.error("Check uncommited changes: ", e);
             throw new RuntimeException(e);
