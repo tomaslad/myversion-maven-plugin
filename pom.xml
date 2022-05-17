@@ -6,7 +6,7 @@
 
     <groupId>io.github.tomaslad</groupId>
     <artifactId>myversion-maven-plugin</artifactId>
-    <version>9</version>
+    <version>4.0.0</version>
     <name>myversion-maven-plugin</name>
     <url>https://github.com/tomaslad/myversion-maven-plugin</url>
     <description>MyVersion maven plugin</description>
@@ -152,7 +152,7 @@
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
                         <goals>
-                            <goal>sign</goal>
+<!--                            <goal>sign</goal>-->
                         </goals>
                     </execution>
                 </executions>
@@ -243,12 +243,6 @@
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-project</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jgit</groupId>
-            <artifactId>org.eclipse.jgit</artifactId>
-            <version>6.1.0.202203080745-r</version>
-        </dependency>
-
         <!-- Provided dependencies -->
 
         <dependency>

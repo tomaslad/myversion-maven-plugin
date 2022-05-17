@@ -6,13 +6,6 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Set;
-
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.Status;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.internal.storage.file.FileRepository;
-import org.eclipse.jgit.lib.Repository;
 
 @Slf4j
 @UtilityClass
@@ -48,11 +41,18 @@ public final class GitUtils {
         }
     }
 
-    public static boolean hasUncommitedChanges() throws IOException, GitAPIException {
-        Repository repo = new FileRepository(System.getProperty("user.dir") + "/.git" );
-        Git git = new Git( repo );
-        Status status = git.status().call();
-        Set<String> modified = status.getModified();
-        return ( modified.size() != 0 );
+    public static boolean hasUncommitedChanges() {
+        try {
+            // https://git-scm.com/docs/git-diff
+            Process process = Runtime.getRuntime().exec("git diff --name-only");
+            int exitValue = process.waitFor();
+            if (exitValue != 0) {
+                log.warn("exitValue: {}", exitValue);
+            }
+            return true;
+        } catch (IOException | InterruptedException e) {
+            log.error("Check uncommited changes: ", e);
+            throw new RuntimeException(e);
+        }
     }
 }
