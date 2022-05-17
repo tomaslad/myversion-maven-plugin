@@ -6,20 +6,19 @@ import io.github.tomaslad.maven.plugin.myversion.semver.SemVer;
 import io.github.tomaslad.maven.plugin.myversion.semver.SemVerUtils;
 import lombok.SneakyThrows;
 import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugins.annotations.Parameter;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.Properties;
 
 public abstract class AbstractBumpMojo extends AbstractMojo {
+    @Parameter
+    private boolean checkUncommitedChanges;
 
     @SneakyThrows
     @Override
     public void execute() {
-        InputStream input = new FileInputStream(System.getProperty("user.dir") + "/src/main/resources/git.properties");
-        Properties prop = new Properties();
-        prop.load(input);
-        if (prop.getProperty("checkUncommitedChanges").equals("1") && GitUtils.hasUncommitedChanges()) {
+        System.out.println(checkUncommitedChanges);
+        if (checkUncommitedChanges && GitUtils.hasUncommitedChanges()) {
             getLog().error("Repository has uncommited changes");
         } else {
             GitDescribe describe = GitUtils.describe();
