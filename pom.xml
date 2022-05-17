@@ -6,7 +6,7 @@
 
     <groupId>io.github.tomaslad</groupId>
     <artifactId>myversion-maven-plugin</artifactId>
-    <version>4.0.0</version>
+    <version>9</version>
     <name>myversion-maven-plugin</name>
     <url>https://github.com/tomaslad/myversion-maven-plugin</url>
     <description>MyVersion maven plugin</description>
@@ -151,7 +151,7 @@
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
                         <goals>
-<!--                            <goal>sign</goal>-->
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
