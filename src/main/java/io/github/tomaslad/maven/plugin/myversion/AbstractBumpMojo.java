@@ -17,7 +17,6 @@ public abstract class AbstractBumpMojo extends AbstractMojo {
     @SneakyThrows
     @Override
     public void execute() {
-        System.out.println(checkUncommitedChanges);
         if (checkUncommitedChanges && GitUtils.hasUncommitedChanges()) {
             getLog().error("Repository has uncommited changes");
         } else {
