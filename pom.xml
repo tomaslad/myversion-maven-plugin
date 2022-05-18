@@ -97,8 +97,8 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
+
     <build>
         <pluginManagement>
             <plugins>
@@ -272,7 +272,5 @@
             <artifactId>truth</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
 </project>
