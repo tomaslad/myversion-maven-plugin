@@ -166,14 +166,6 @@
                     <autoReleaseAfterClose>false</autoReleaseAfterClose>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>io.github.tomaslad</groupId>
-                <artifactId>myversion-maven-plugin</artifactId>
-                <version>9</version>
-                <configuration>
-                    <checkUncommitedChanges>true</checkUncommitedChanges>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
