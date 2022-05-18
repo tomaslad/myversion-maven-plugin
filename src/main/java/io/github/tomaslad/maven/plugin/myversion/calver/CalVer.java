@@ -54,7 +54,7 @@ public class CalVer {
                     .modifier("rc." + (Integer.parseInt(rcNumber) + 1))
                     .build();
         } else {
-            log.info("Version didn't have release candidate -> set to rc1");
+            log.info("Version didn't have release candidate -> set to rc.1");
             return CalVer.builder()
                     .major(major)
                     .minor(minor)
