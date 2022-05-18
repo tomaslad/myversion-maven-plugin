@@ -40,4 +40,19 @@ public final class GitUtils {
             throw new RuntimeException(e);
         }
     }
+
+    public static boolean hasUncommitedChanges() {
+        try {
+            // https://git-scm.com/docs/git-diff
+            Process process = Runtime.getRuntime().exec("git diff --name-only");
+            int exitValue = process.waitFor();
+            if (exitValue != 0) {
+                log.warn("exitValue: {}", exitValue);
+            }
+            return !(IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8).isEmpty());
+        } catch (IOException | InterruptedException e) {
+            log.error("Check uncommited changes: ", e);
+            throw new RuntimeException(e);
+        }
+    }
 }

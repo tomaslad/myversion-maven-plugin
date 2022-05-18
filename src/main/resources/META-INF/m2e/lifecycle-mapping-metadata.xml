@@ -7,6 +7,7 @@
                     <goal>bump-major</goal>
                     <goal>bump-minor</goal>
                     <goal>bump-patch</goal>
+                    <goal>bump-release-candidate</goal>
                 </goals>
             </pluginExecutionFilter>
         </pluginExecution>
