@@ -8,8 +8,6 @@ import lombok.SneakyThrows;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import java.util.Properties;
-
 public abstract class AbstractBumpMojo extends AbstractMojo {
     @Parameter
     private boolean checkUncommitedChanges;
@@ -17,7 +15,7 @@ public abstract class AbstractBumpMojo extends AbstractMojo {
     @SneakyThrows
     @Override
     public void execute() {
-        if (checkUncommitedChanges && GitUtils.hasUncommitedChanges()) {
+        if (checkUncommitedChanges && GitUtils.hasUncommittedChanges()) {
             getLog().error("Repository has uncommited changes");
         } else {
             GitDescribe describe = GitUtils.describe();
