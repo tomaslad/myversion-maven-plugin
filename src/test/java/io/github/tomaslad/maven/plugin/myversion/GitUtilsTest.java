@@ -19,7 +19,8 @@ public class GitUtilsTest {
         if (exitValue != 0) {
             log.warn("exitValue: {}", exitValue);
         }
-        assertTrue(IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8).contains("Repository has uncommited changes"));
+        //check if checkUncommitedChanges is set to true
+        assertTrue(IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8).contains("true"));
     }
 
     @Test
@@ -29,6 +30,7 @@ public class GitUtilsTest {
         if (exitValue != 0) {
             log.warn("exitValue: {}", exitValue);
         }
-        assertTrue(IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8).contains("Bump version from"));
+        //check if checkUncommitedChanges is set to false
+        assertTrue(IOUtils.toString(process.getInputStream(), StandardCharsets.UTF_8).contains("false"));
     }
 }
