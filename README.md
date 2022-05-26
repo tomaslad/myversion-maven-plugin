@@ -23,6 +23,7 @@ Project using this plugin will use [semantic versions](http://semver.org/) style
 # Inspired from
 
 * https://github.com/jgitver/jgitver-maven-plugin
+* https://github.com/qoomon/maven-git-versioning-extension
 * https://github.com/nebula-plugins/nebula-release-plugin
 * https://github.com/palantir/gradle-git-version
 * https://github.com/allegro/axion-release-plugin
