@@ -41,7 +41,7 @@ public final class GitUtils {
         }
     }
 
-    public static boolean hasUncommitedChanges() {
+    public static boolean hasUncommittedChanges() {
         try {
             // https://git-scm.com/docs/git-diff
             Process process = Runtime.getRuntime().exec("git diff --name-only");

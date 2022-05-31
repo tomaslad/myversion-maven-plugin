@@ -31,6 +31,5 @@ public final class SemVerUtils {
         }
 
         return builder.build();
-
     }
 }
